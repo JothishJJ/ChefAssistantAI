@@ -3,8 +3,8 @@ package main
 import (
 	"html/template"
 	"io"
-	"net/http"
 
+	"github.com/JothishJJ/ChefAssistantAI/cmd/routes"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -42,23 +42,11 @@ func createServer() *echo.Echo {
 	return e
 }
 
-type Page struct {
-	Name string
-}
-
 func main() {
 
 	e := createServer()
 
-	// TODO: Make Routes on seperate folders
-	e.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index", Page{Name: "Chef's Assistant AI"})
-	})
-
-	e.GET("/dashboard", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, "Development is still underway")
-
-	})
+	routes.Routes(e)
 
 	// Turns out you to run this after every handler
 	e.Logger.Fatal(e.Start(":8080"))
