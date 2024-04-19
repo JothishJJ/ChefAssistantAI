@@ -1,8 +1,12 @@
 {{ block "dashboard" . }}
 {{ template "header" . }}
-<div class="flex flex-col items-center justify-center">
-    <h1>{{ .Name }}</h1>
-    <p>Explore all the prompts available!</p>
+<div class="flex flex-col items-center justify-center gap-4">
+    <h1 class="text-green-600">{{ .Name }}</h1>
+    <h2>Explore all the prompts available!</h2>
+
+    <form>
+        <input type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg">
+    </form>
 </div>
 {{ template "footer" }}
 {{ end }}
