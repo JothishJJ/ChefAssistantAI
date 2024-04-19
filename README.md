@@ -23,8 +23,11 @@ air
 If you're not using air, you can just run it using GO
 
 ```bash
+npm run tailwind
 go run cmd/main.go
 ```
+
+Don't forget to run it again after changes
 
 From there you can go to `localhost:8080` to listen to the server
 

@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "name": "chefassistantai",
+  "description": "The no.1 AI App in the world for finding the right recipes for you. It generates recipes with the items you have at Home, with details of calories, macros etc.",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./public/main.css -o ./public/output.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jothish JJ",
+  "license": "ISC"
+}
