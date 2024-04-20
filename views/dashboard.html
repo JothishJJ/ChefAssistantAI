@@ -2,25 +2,28 @@
 {{ template "header" . }}
 <div class="flex flex-col items-center justify-center gap-4">
     <h1 class="text-green-600">{{ .Name }}</h1>
-    <h2>Explore all the prompts available!</h2>
+    <h2>Ask some questions</h2>
+
+    <p>*not a chat</p>
 
     {{ template "sendMessage" }}
 
     {{ template "messages" }}
+
 </div>
 {{ template "footer" }}
 {{ end }}
 
 {{ block "sendMessage" . }}
-<form hx-target="#chat-message" hx-post="/generate" hx-swap="outerHTML">
+<form hx-target="#chat-message" class="flex w-96 justify-between" hx-post="/generate" hx-swap="outerHTML">
     <input name="message" type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg">
-    <button type="submit" class="p-1 bg-green-600 rounded-xl">Send!</button>
+    <button type="submit" class="p-1 bg-green-600 rounded-xl w-24">Send</button>
 </form>
 {{ end }}
 
 {{ block "messages" . }}
-<div id="chat-message">
-    <div id="hello">{{ .Message }}</div>
+<div id="chat-message" class="chat-message">
+    <div id="message" class="message">{{ .Message }}</div>
 </div>
 
 <script>
@@ -28,7 +31,7 @@
     function convertMessage() {
         text = "{{ .Message }}";
         html = con.makeHtml(text);
-        let div = document.getElementById("hello");
+        let div = document.getElementById("message");
         div.innerHTML = html
     }
 

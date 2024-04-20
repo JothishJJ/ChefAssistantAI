@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	@apply bg-neutral-200;
+}
+
 h1 {
 	@apply text-6xl font-bold;
 }
@@ -9,3 +13,12 @@ h1 {
 h2 {
 	@apply text-5xl font-bold;
 }
+
+.chat-message {
+	@apply w-96;
+}
+
+.message {
+	@apply bg-white rounded-md p-1 ;
+}
+

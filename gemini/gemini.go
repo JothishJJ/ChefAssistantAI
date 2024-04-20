@@ -11,7 +11,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-func GenerateChat(message string) (*genai.GenerateContentResponse, error) {
+func GenerateChat() (*genai.ChatSession, *context.Context) {
 
 	// ! Comment in Production
 	err := godotenv.Load(".env")
@@ -25,8 +25,6 @@ func GenerateChat(message string) (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	defer client.Close()
 
 	// Model Details
 	model := client.GenerativeModel("gemini-1.5-pro-latest")
@@ -53,7 +51,12 @@ func GenerateChat(message string) (*genai.GenerateContentResponse, error) {
 		},
 	}
 
-	resp, err := cs.SendMessage(ctx, genai.Text(message))
+	return cs, &ctx
+}
+
+func SendMessage(cs *genai.ChatSession, ctx *context.Context, message string) (*genai.GenerateContentResponse, error) {
+
+	resp, err := cs.SendMessage(*ctx, genai.Text(message))
 	// No complex error handling here
 	if err != nil {
 		fmt.Print(err)

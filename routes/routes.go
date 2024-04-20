@@ -19,7 +19,8 @@ type Message struct {
 
 func sendMessage(message string) genai.Part {
 
-	resp, err := gemini.GenerateChat(message)
+	cs, ctx := gemini.GenerateChat()
+	resp, err := gemini.SendMessage(cs, ctx, message)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -41,7 +42,7 @@ func Routes(e *echo.Echo) {
 
 	// Dashboard Routes
 	e.GET("/dashboard", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "dashboard", Page{Name: "Welcome to Dashboard"})
+		return c.Render(http.StatusOK, "dashboard", Page{Name: "Dashboard"})
 	})
 
 	e.POST("/generate", func(c echo.Context) error {
