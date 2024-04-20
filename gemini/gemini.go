@@ -7,17 +7,17 @@ import (
 	"os"
 
 	"github.com/google/generative-ai-go/genai"
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 	"google.golang.org/api/option"
 )
 
 func GenerateChat() (*genai.ChatSession, *context.Context) {
 
 	// ! Comment in Production
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("Error Loading .env file: %v", err)
-	}
+	// err := godotenv.Load(".env")
+	// if err != nil {
+		// log.Fatalf("Error Loading .env file: %v", err)
+	// }
 
 	ctx := context.Background()
 
