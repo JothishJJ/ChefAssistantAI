@@ -4,9 +4,34 @@
     <h1 class="text-green-600">{{ .Name }}</h1>
     <h2>Explore all the prompts available!</h2>
 
-    <form>
-        <input type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg">
-    </form>
+    {{ template "sendMessage" }}
+
+    {{ template "messages" }}
 </div>
 {{ template "footer" }}
+{{ end }}
+
+{{ block "sendMessage" . }}
+<form hx-target="#chat-message" hx-post="/generate" hx-swap="outerHTML">
+    <input name="message" type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg">
+    <button type="submit" class="p-1 bg-green-600 rounded-xl">Send!</button>
+</form>
+{{ end }}
+
+{{ block "messages" . }}
+<div id="chat-message">
+    <div id="hello">{{ .Message }}</div>
+</div>
+
+<script>
+    var con = new showdown.Converter()
+    function convertMessage() {
+        text = "{{ .Message }}";
+        html = con.makeHtml(text);
+        let div = document.getElementById("hello");
+        div.innerHTML = html
+    }
+
+    convertMessage()
+</script>
 {{ end }}

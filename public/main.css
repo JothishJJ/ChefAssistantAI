@@ -7,5 +7,5 @@ h1 {
 }
 
 h2 {
-	@apply text-5xl font-bol;
+	@apply text-5xl font-bold;
 }
