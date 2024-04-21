@@ -1,6 +1,6 @@
 {{ block "dashboard" . }}
 {{ template "header" . }}
-<div class="flex flex-col items-center justify-center gap-4">
+<div class="flex flex-col items-center justify-center gap-4 mb-16">
     <div class="my-16">
         <h2>Ask some questions about Food</h2>
 
@@ -9,10 +9,13 @@
     </div>
 
     {{ template "sendMessage" }}
-
     {{ template "messages" }}
 
+
+    <p class="fixed bottom-5 right-10 bg-[rgb(0,0,0,0.1)] rounded-lg p-1">It can sometimes take a minute... after
+        sending</p>
 </div>
+
 {{ template "footer" }}
 {{ end }}
 
@@ -23,13 +26,14 @@
     hx-swap="outerHTML">
     <textarea class="w-full rounded-xl p-2 border-2 border-black text-xl resize-none focus:outline-none" name="message"
         type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg"></textarea>
-    <button type="submit" class="p-1 bg-green-500 hover:bg-green-600 hover:shadow-lg rounded-xl w-32">Send</button>
+    <button id="send" type="submit"
+        class="p-1 bg-green-500 hover:bg-green-600 hover:shadow-lg rounded-xl w-32">Send</button>
 </form>
 {{ end }}
 
 {{ block "messages" . }}
 <div id="chat-message" class="chat-message">
-    <div id="message" class="message">{{ .Message }}</div>
+    <div id="message" class="message space-y-4 p-4">{{ .Message }}</div>
 </div>
 
 <script>
