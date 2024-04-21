@@ -1,10 +1,12 @@
 {{ block "dashboard" . }}
 {{ template "header" . }}
 <div class="flex flex-col items-center justify-center gap-4">
-    <h1 class="text-green-600">{{ .Name }}</h1>
-    <h2>Ask some questions</h2>
+    <div class="my-16">
+        <h2>Ask some questions about Food</h2>
 
-    <p>*not a chat</p>
+        <p class="text-right">*this not a chat</p>
+
+    </div>
 
     {{ template "sendMessage" }}
 
@@ -14,10 +16,14 @@
 {{ template "footer" }}
 {{ end }}
 
+
+
 {{ block "sendMessage" . }}
-<form hx-target="#chat-message" class="flex w-96 justify-between" hx-post="/generate" hx-swap="outerHTML">
-    <input name="message" type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg">
-    <button type="submit" class="p-1 bg-green-600 rounded-xl w-24">Send</button>
+<form hx-target="#chat-message" class="flex lg:px-48 px-4 w-full justify-between gap-12" hx-post="/generate"
+    hx-swap="outerHTML">
+    <textarea class="w-full rounded-xl p-2 border-2 border-black text-xl resize-none focus:outline-none" name="message"
+        type="text" placeholder="Ask me your questions" class="p-1 border-2 border-black rounded-lg"></textarea>
+    <button type="submit" class="p-1 bg-green-500 hover:bg-green-600 hover:shadow-lg rounded-xl w-32">Send</button>
 </form>
 {{ end }}
 
@@ -31,10 +37,10 @@
     function convertMessage() {
         text = "{{ .Message }}";
         html = con.makeHtml(text);
+
         let div = document.getElementById("message");
         div.innerHTML = html
     }
-
     convertMessage()
 </script>
 {{ end }}

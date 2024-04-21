@@ -14,8 +14,12 @@ h2 {
 	@apply text-5xl font-bold;
 }
 
+a {
+	@apply hover:underline text-blue-500;
+}
+
 .chat-message {
-	@apply w-96;
+	@apply lg:px-48 px-4 w-full;
 }
 
 .message {

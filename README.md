@@ -17,6 +17,7 @@ git clone <this-repo>
 If you have [air](https://github.com/cosmtrek/air) installed, make sure you are in the project folder and start server by running this command
 
 ```bash
+npm run tailwind # Have to re-run after tailwindcss changes 
 air
 ```
 
@@ -24,7 +25,7 @@ If you're not using air, you can just run it using GO
 
 ```bash
 npm run tailwind
-go run cmd/main.go
+go run main.go
 ```
 
 Don't forget to run it again after changes

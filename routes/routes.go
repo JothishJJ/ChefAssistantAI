@@ -26,7 +26,6 @@ func sendMessage(message string) genai.Part {
 	}
 
 	responseText := resp.Candidates[0].Content.Parts[0]
-	log.Print(responseText)
 	return responseText
 }
 
