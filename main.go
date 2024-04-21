@@ -36,7 +36,7 @@ func createServer() *echo.Echo {
 	*
 	* ! Disable this in production
 	 */
-	e.Use(middleware.Logger())
+	// e.Use(middleware.Logger())
 
 	// RateLimitter
 	rateLimitter := middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(20))
